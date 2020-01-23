@@ -12,7 +12,7 @@ class AppBottomNavigationBarController extends StatefulWidget {
 
 class _AppBottomNavigationBarControllerState
     extends State<AppBottomNavigationBarController> {
-
+  final PageStorageBucket bucket = PageStorageBucket();
   final List<Widget> pages = [
     HomePage(
       key: PageStorageKey('Home')
@@ -25,7 +25,6 @@ class _AppBottomNavigationBarControllerState
     )
   ];
 
-  final PageStorageBucket bucket = PageStorageBucket();
 
   int _selectedIndex = 0;
 
@@ -46,6 +45,10 @@ class _AppBottomNavigationBarControllerState
     ],
   );
 
+  void changePage(int index) {
+    setState(() => _selectedIndex = index);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,9 +58,5 @@ class _AppBottomNavigationBarControllerState
         bucket: bucket,
       ),
     );
-  }
-
-  void changePage(int index) {
-    setState(() => _selectedIndex = index);
   }
 }
