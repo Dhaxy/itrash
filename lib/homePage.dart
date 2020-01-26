@@ -21,7 +21,7 @@ class _HomeState extends State<HomePage> {
           crossAxisCount: 2,
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
-          childAspectRatio: (40 / 65) ,
+          childAspectRatio: (40 / 60) ,
           padding: const EdgeInsets.all(20),
           children: <Widget>[
             new GestureDetector(

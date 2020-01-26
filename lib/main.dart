@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/Components/AppBottomNavigationBarController.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
