@@ -31,6 +31,9 @@ class _AppBottomNavigationBarControllerState
   Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
     onTap: (int index) => changePage(index),
     currentIndex: selectedIndex,
+    backgroundColor: Colors.indigo[700],
+    unselectedItemColor: Colors.grey,
+    selectedItemColor: Colors.white,
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
           icon: Icon(Icons.home), title: Text("Home")

@@ -8,6 +8,10 @@ class HttpService {
     final res = await http.get(apiUrl + 'status');
 
     if (res.statusCode == 200) {
+      Map result = json.decode(res.body);
+      // if (result['status'] == "-1") {
+      //   throw "Data is resetting, try again later.";
+      // }
       return LevelData.fromJson(json.decode(res.body));
     } else {
       throw "Can't get posts.";
@@ -16,6 +20,7 @@ class HttpService {
 
   void resetData() async {
     await http.post(apiUrl + 'reset');
+    getLevelData();
   }
 }
    
@@ -26,7 +31,8 @@ class LevelData {
 
   factory LevelData.fromJson(Map<String, dynamic> json) {
     return LevelData(
-      levelData: json['status']
+      // levelData: json['status']
+      levelData: '20'
     );
   }
 }
