@@ -76,7 +76,8 @@ class _BinsState extends State<BinsPage> {
                         textColor: Colors.white,
                         label: Text("Refresh"),
                         onPressed: () => {
-                            httpService.resetData()
+                            httpService.resetData(),
+                            setState(() {})
                         },
                     ),
                   ]
@@ -96,6 +97,21 @@ class _BinsState extends State<BinsPage> {
       int randomNumber = random.nextInt(100);
       String randNumberString = randomNumber.toString();
 
+      if (number == 1) {
+        return LinearPercentIndicator(
+                leading: Text("Bin $number", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                padding: EdgeInsets.only(left: 20),
+                width: MediaQuery.of(context).size.width - 150,
+                animation: true,
+                animationDuration: 1000,
+                lineHeight: 20.0,
+                linearStrokeCap: LinearStrokeCap.butt,
+                progressColor: colors[number - 1],
+                percent: double.tryParse(snapshot.data.levelData)/100,
+                center: Text(snapshot.data.levelData + '%')
+              );
+      }
+
       return LinearPercentIndicator(
                 leading: Text("Bin $number", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
                 padding: EdgeInsets.only(left: 20),
@@ -105,8 +121,6 @@ class _BinsState extends State<BinsPage> {
                 lineHeight: 20.0,
                 linearStrokeCap: LinearStrokeCap.butt,
                 progressColor: colors[number - 1],
-                // percent: double.tryParse(snapshot.data.levelData)/100,
-                // center: Text(snapshot.data.levelData + '%')
                 percent: (randomNumber / 100).toDouble(),
                 center: Text(randNumberString + '%'),
               );
